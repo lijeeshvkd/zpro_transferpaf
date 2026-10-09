@@ -1,0 +1,33 @@
+<mvc:View controllerName="zprotransferpaf.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Panel width="auto" class="sapUiResponsiveMargin" height="95%" >
+                <VBox class="sapUiSmallMargin" alignItems="Center">
+                    <VBox width="60%" class="sapUiLargeMarginTop">
+                        <Label id="mySapIdLabel" text="My SAP ID" required="true"/>
+                        <Input id="mySapId" placeholder="Enter SAP ID" value="{viewModel>/transferData/Myid}" class="sapUiSmallMarginBottom"/>
+
+                        <Label id="forwardItLabel" text="Forward It" required="true"/>
+                        <Input id="forwardIt" placeholder="Enter Forward ID" value="{viewModel>/transferData/Toid}" class="sapUiSmallMarginBottom"/>
+
+                        <Label id="fromDateLabel" text="From Date" required="true"/>
+                        <DatePicker id="fromDate" placeholder="Select From Date" value="{ path: 'viewModel>/transferData/FromDate', formatter: '.formatter.formatDate' }" valueFormat="yyyy-MM-dd" displayFormat="dd/MM/yyyy" class="sapUiSmallMarginBottom"/>
+
+                        <Label id="toDateLabel" text="To Date" required="true"/>
+                        <DatePicker id="toDate" placeholder="Select To Date" value="{ path: 'viewModel>/transferData/ToDate', formatter: '.formatter.formatDate' }" valueFormat="yyyy-MM-dd" displayFormat="dd/MM/yyyy" class="sapUiSmallMarginBottom"/>
+
+                        <FlexBox id="buttonBar" justifyContent="End" class="sapUiSmallMarginTop">
+                            <Button id="btnReset" text="Reset" type="Default" press="onReset" class="sapUiSmallMarginEnd"/>
+                            <Button id="btnDeActivate" text="De-Activate" press="onDeActivate" type="Negative" class="sapUiSmallMarginEnd"/>
+                            <Button id="btnActivate" text="Activate" press="onActivate" type="Emphasized"/>
+                        </FlexBox>
+                    </VBox>
+                </VBox>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>
