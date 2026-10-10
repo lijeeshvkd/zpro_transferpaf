@@ -2,28 +2,37 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
     xmlns:l="sap.ui.layout">
     <Page id="page" title="{i18n>title}">
         <content>
             <Panel width="auto" class="sapUiResponsiveMargin" height="95%" >
                 <VBox class="sapUiSmallMargin" alignItems="Center">
                     <VBox width="60%" class="sapUiLargeMarginTop">
-                        <Label id="mySapIdLabel" text="My SAP ID" required="true"/>
-                        <Input id="mySapId" placeholder="Enter SAP ID" value="{viewModel>/transferData/Myid}" class="sapUiSmallMarginBottom"/>
+                        <Label id="mySapIdLabel" text="My SAP ID" required="false"/>
+                        <Input id="mySapId" editable="false" placeholder="Enter SAP ID" value="{viewModel>/transferData/Myid}" class="sapUiSmallMarginBottom"/>
 
                         <Label id="forwardItLabel" text="Forward It" required="true"/>
                         <Input id="forwardIt" placeholder="Enter Forward ID" value="{viewModel>/transferData/Toid}" class="sapUiSmallMarginBottom"/>
 
                         <Label id="fromDateLabel" text="From Date" required="true"/>
-                        <DatePicker id="fromDate" placeholder="Select From Date" value="{ path: 'viewModel>/transferData/FromDate', formatter: '.formatter.formatDate' }" valueFormat="yyyy-MM-dd" displayFormat="dd/MM/yyyy" class="sapUiSmallMarginBottom"/>
+                        <DatePicker id="fromDate" placeholder="Select From Date" dateValue="{viewModel>/transferData/FromDate}" valueFormat="yyyy-MM-dd" displayFormat="dd/MM/yyyy" class="sapUiSmallMarginBottom"/>
 
                         <Label id="toDateLabel" text="To Date" required="true"/>
-                        <DatePicker id="toDate" placeholder="Select To Date" value="{ path: 'viewModel>/transferData/ToDate', formatter: '.formatter.formatDate' }" valueFormat="yyyy-MM-dd" displayFormat="dd/MM/yyyy" class="sapUiSmallMarginBottom"/>
-
+                        <DatePicker id="toDate" placeholder="Select To Date" dateValue="{viewModel>/transferData/ToDate}" valueFormat="yyyy-MM-dd" displayFormat="dd/MM/yyyy" class="sapUiSmallMarginBottom"/>
+                        
+                        <Label id="statusLabel" text="Status"/>
+                        <Select id="status" selectedKey="{viewModel>/transferData/Status}" class="sapUiSmallMarginBottom" width="100%">
+                            <items>
+                                <core:Item key="A" text="Active"/>
+                                <core:Item key="D" text="De-Activated"/>
+                            </items>
+                        </Select>
                         <FlexBox id="buttonBar" justifyContent="End" class="sapUiSmallMarginTop">
-                            <Button id="btnReset" text="Reset" type="Default" press="onReset" class="sapUiSmallMarginEnd"/>
-                            <Button id="btnDeActivate" text="De-Activate" press="onDeActivate" type="Negative" class="sapUiSmallMarginEnd"/>
-                            <Button id="btnActivate" text="Activate" press="onActivate" type="Emphasized"/>
+                            <Button id="btnReset" text="Reset" type="Default" press="onReset" class="sapUiTinyMarginEnd"/>
+                            <!-- <Button id="btnDeActivate" text="De-Activate" press="onDeActivate" type="Negative" class="sapUiSmallMarginEnd"/>
+                            <Button id="btnActivate" text="Activate" press="onActivate" type="Emphasized"/> -->
+                            <Button id="btnSave" text="Save" type="Emphasized" press="onSave"/>
                         </FlexBox>
                     </VBox>
                 </VBox>
